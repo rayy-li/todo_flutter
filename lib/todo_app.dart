@@ -20,6 +20,8 @@ class _TodoAppState extends State<TodoApp> {
 
   @override
   Widget build(BuildContext context) {
+    final inputController = TextEditingController();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
@@ -42,6 +44,7 @@ class _TodoAppState extends State<TodoApp> {
                 ),
                 // Input
                 TextField(
+                  controller: inputController,
                   decoration: const InputDecoration(
                     hintText: 'What needs to be done?',
                     hintStyle: TextStyle(
@@ -52,6 +55,7 @@ class _TodoAppState extends State<TodoApp> {
                     setState(() {
                       _todos.add(Todo(value: value));
                     });
+                    inputController.clear();
                   },
                 ),
                 SizedBox(
